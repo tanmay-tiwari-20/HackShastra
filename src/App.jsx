@@ -3,7 +3,7 @@ import Nav from "./components/Nav";
 
 const App = () => {
   return (
-      <div className="w-full min-h-screen bg-[#E50914]">
+      <div className="min-h-[200vh] bg-[#E50914]">
       <Nav />
       <Hero />
     </div>

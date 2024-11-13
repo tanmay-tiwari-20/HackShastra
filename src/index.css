@@ -2,7 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-*{
-    color: white;
-    font-family: 'nunito sans';
+* {
+  color: white;
+  font-family: "nunito sans";
+}
+
+html {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  width: 1px;
 }

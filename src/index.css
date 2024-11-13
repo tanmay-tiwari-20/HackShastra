@@ -5,12 +5,13 @@
 * {
   color: white;
   font-family: "nunito sans";
+  user-select: none;
 }
 
-html {
+body {
   overflow-x: hidden;
 }
 
 ::-webkit-scrollbar {
-  width: 1px;
+    width: 1px;
 }

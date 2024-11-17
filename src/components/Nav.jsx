@@ -10,7 +10,7 @@ const Nav = () => {
       {/* Left Section */}
       <div className="px-[2vw] md:px-[2vw] lg:px-[4vw]">
         <motion.div
-          className="bg-[#181818] w-[40vw] md:w-[29vw] lg:w-[15.5vw] h-[19vh] md:h-[16vh] lg:h-[25vh] rounded-b-3xl p-4 relative"
+          className="bg-[#181818] text-white w-[40vw] md:w-[29vw] lg:w-[15.5vw] h-[19vh] md:h-[16vh] lg:h-[25vh] rounded-b-3xl p-4 relative"
           initial={{ y: -200, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
           transition={{ ease: [0.39, 0.24, 0.3, 1], duration: 2 }}
@@ -23,7 +23,7 @@ const Nav = () => {
           </p>
 
           <motion.button
-            className="flex items-center justify-center gap-2 lg:gap-3 md:gap-4 bg-white lg:w-[13vw] md:w-[25vw] h-[5vh] md:h-[5vh] rounded-lg mt-2 md:mt-2 lg:mt-5 absolute z-10"
+            className="flex items-center justify-center gap-2 lg:gap-3 md:gap-4 bg-white lg:w-[13vw] md:w-[25vw] h-[5vh] rounded-lg mt-2 md:mt-2 lg:mt-5 absolute z-10"
             onHoverStart={() => setIsHovered(true)}
             onHoverEnd={() => setIsHovered(false)}
             whileHover={{

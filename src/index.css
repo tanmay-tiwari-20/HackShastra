@@ -3,7 +3,6 @@
 @tailwind utilities;
 
 * {
-  color: white;
   font-family: "nunito sans";
   user-select: none;
 }
@@ -14,5 +13,5 @@ body {
 }
 
 ::-webkit-scrollbar {
-  width: 1px;
+  width: 0px;
 }

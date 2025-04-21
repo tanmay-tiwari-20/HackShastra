@@ -9,6 +9,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <script> src = "https://kit.fontawesome.com/your-kit-code.js", crossorigin = "anonymous" ></script>
 
   <style>
     * {
@@ -45,22 +46,54 @@
     .time-label {
       color: black;
     }
+
+    .hamburger span {
+      display: block;
+      height: 3px;
+      width: 25px;
+      background: #000;
+      margin: 5px auto;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(6px, -6px);
+    }
   </style>
 </head>
 
 <body>
-  <!-- Header -->
-  <header class="flex flex-wrap justify-between items-center px-6 md:px-10 py-4 md:py-6 bg-white text-black">
-    <img src="IMG_1993.PNG" alt="Hackshastra Logo" class="h-12 md:h-16 mb-4 md:mb-0">
-    <nav
-      class="flex flex-wrap justify-center md:justify-end gap-4 md:gap-8 text-sm md:text-lg font-medium w-full md:w-auto">
-      <a href="#about" class="hover:text-red-400 transition">About Us</a>
-      <a href="#timeline" class="hover:text-red-400 transition">Timeline</a>
-      <a href="#judges" class="hover:text-red-400 transition">Judges</a>
-      <a href="#mentors" class="hover:text-red-400 transition">Mentors</a>
-      <a href="#stats" class="hover:text-red-400 transition">Stats</a>
-      <a href="#sponsors" class="hover:text-red-400 transition">Sponsors</a>
-      <a href="#contact" class="hover:text-red-400 transition">Contact</a>
+  <header class="flex items-center justify-between px-6 py-4 bg-white top-0 z-50">
+    <!-- Logo -->
+    <img src="IMG_1993.PNG" alt="Hackshastra Logo" class="h-12 md:h-16" />
+
+    <!-- Hamburger Button -->
+    <button id="menu-btn" class="hamburger block md:hidden focus:outline-none">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+
+    <!-- Navigation Menu -->
+    <nav id="menu" class="hidden md:flex md:flex-row md:items-center md:gap-6 text-base font-medium 
+         absolute md:static top-20 left-4 right-4 flex-col space-y-4
+         bg-white/70 backdrop-blur-lg md:bg-transparent md:backdrop-blur-0 
+         px-6 py-6 rounded-2xl shadow-xl md:shadow-none md:space-y-0 md:px-0 md:py-0 z-50 flex flex-col">
+      <a href="#about" class="hover:text-red-500 transition">About Us</a>
+      <a href="#timeline" class="hover:text-red-500 transition">Timeline</a>
+      <a href="#judges" class="hover:text-red-500 transition">Judges</a>
+      <a href="#mentors" class="hover:text-red-500 transition">Mentors</a>
+      <a href="#stats" class="hover:text-red-500 transition">Stats</a>
+      <a href="#sponsors" class="hover:text-red-500 transition">Sponsors</a>
+      <a href="#contact" class="hover:text-red-500 transition">Contact</a>
     </nav>
   </header>
 
@@ -84,7 +117,7 @@
       <div class="md:w-1/2 animate-fade-in">
         <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold text-gray-900 mb-6 leading-tight">About <span
             class="text-red-600">Us</span></h2>
-        <p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-8"> <span
+        <p class="text-base sm:text-lg text-gray-700 leading-relaxed mb-2"> <span
             class="font-semibold text-red-600">Hackshastra</span> is not just another hackathon — it's a <span
             class="font-medium text-black">spiritual-tech awakening</span>. Built for creators, coders, and disruptors,
           we blend mythology with innovation to create projects that feel divine. Whether you're launching your first
@@ -113,35 +146,44 @@
     <div class="relative h-2 w-full max-w-4xl bg-gray-200 rounded-full mb-12 md:mb-16 mx-auto">
       <div class="absolute top-0 left-0 h-2 bg-red-600 rounded-full" style="width: 23%;"></div>
     </div>
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-6 max-w-7xl mx-auto">
-      <div class="flex flex-col items-center text-center px-2">
+    <!-- Timeline Section -->
+    <div id="timeline"
+      class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-6 max-w-7xl mx-auto px-4 py-16">
+      <div class="timeline-item flex flex-col items-center text-center px-2">
         <div
           class="bg-red-600 text-white w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center text-lg md:text-xl font-bold shadow-lg">
-          1</div>
+          1
+        </div>
         <h3 class="mt-4 text-base md:text-xl font-semibold text-gray-800">Registrations Open</h3>
         <p class="mt-1 text-sm text-gray-600">10 April 2025</p>
         <p class="text-xs mt-1 text-gray-500">Applications begin. Limited spots!</p>
       </div>
-      <div class="flex flex-col items-center text-center px-2">
+
+      <div class="timeline-item flex flex-col items-center text-center px-2">
         <div
           class="bg-yellow-500 text-white w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center text-lg md:text-xl font-bold shadow-lg">
-          2</div>
+          2
+        </div>
         <h3 class="mt-4 text-base md:text-xl font-semibold text-gray-800">Registrations Close</h3>
         <p class="mt-1 text-sm text-gray-600">4 May 2025</p>
         <p class="text-xs mt-1 text-gray-500">Last chance to enter the tech-war!</p>
       </div>
-      <div class="flex flex-col items-center text-center px-2">
+
+      <div class="timeline-item flex flex-col items-center text-center px-2">
         <div
           class="bg-indigo-600 text-white w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center text-lg md:text-xl font-bold shadow-lg">
-          3</div>
+          3
+        </div>
         <h3 class="mt-4 text-base md:text-xl font-semibold text-gray-800">Online Round</h3>
         <p class="mt-1 text-sm text-gray-600">5 – 7 May 2025</p>
         <p class="text-xs mt-1 text-gray-500">Submit your pitch decks. Only the sharpest move forward.</p>
       </div>
-      <div class="flex flex-col items-center text-center px-2">
+
+      <div class="timeline-item flex flex-col items-center text-center px-2">
         <div
           class="bg-green-600 text-white w-12 h-12 md:w-14 md:h-14 rounded-full flex items-center justify-center text-lg md:text-xl font-bold shadow-lg">
-          4</div>
+          4
+        </div>
         <h3 class="mt-4 text-base md:text-xl font-semibold text-gray-800">Offline Hackathon</h3>
         <p class="mt-1 text-sm text-gray-600">17 May 2025</p>
         <p class="text-xs mt-1 text-gray-500">Show up, build live, and compete in the final divine battle.</p>
@@ -151,32 +193,32 @@
       <h3 class="text-5xl md:text-6xl font-extrabold ">
         Hackathon <span class="text-red-600">Starts In</span>
       </h3>
-      
-    
+
+
       <div id="countdown-wrapper"
         class="flex flex-wrap sm:flex-nowrap gap-4 sm:gap-6 justify-center items-center text-center mt-10">
-        
+
         <!-- Days -->
         <div
           class="time-box bg-white/10 backdrop-blur-lg text-white px-4 sm:px-5 py-3 sm:py-4 rounded-2xl shadow-md border border-white/20 w-24 sm:w-28 md:w-32">
           <span id="days" class="time-value text-2xl sm:text-3xl md:text-4xl font-semibold">00</span>
           <div class="time-label text-xs font-semibold mt-1 uppercase tracking-wide">Days</div>
         </div>
-    
+
         <!-- Hours -->
         <div
           class="time-box bg-white/10 backdrop-blur-lg text-white px-4 sm:px-5 py-3 sm:py-4 rounded-2xl shadow-md border border-white/20 w-24 sm:w-28 md:w-32">
           <span id="hours" class="time-value text-2xl sm:text-3xl md:text-4xl font-semibold">00</span>
           <div class="time-label text-xs font-semibold mt-1 uppercase tracking-wide">Hours</div>
         </div>
-    
+
         <!-- Minutes -->
         <div
           class="time-box bg-white/10 backdrop-blur-lg text-white px-4 sm:px-5 py-3 sm:py-4 rounded-2xl shadow-md border border-white/20 w-24 sm:w-28 md:w-32">
           <span id="minutes" class="time-value text-2xl sm:text-3xl md:text-4xl font-semibold">00</span>
           <div class="time-label text-xs font-semibold mt-1 uppercase tracking-wide">Minutes</div>
         </div>
-    
+
         <!-- Seconds -->
         <div
           class="time-box bg-white/10 backdrop-blur-lg text-white px-4 sm:px-5 py-3 sm:pt-4 rounded-2xl shadow-md border border-white/20 w-24 sm:w-28 md:w-32">
@@ -185,7 +227,7 @@
         </div>
       </div>
     </div>
-    
+
 
     </div>
   </section>
@@ -245,20 +287,28 @@
     </h2>
     <div class="grid md:grid-cols-4 gap-12">
       <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-5xl font-bold text-gray-900">2K+</h3>
-        <p class="text-red-300 text-sm">Registrations</p>
+        <h3 class="text-5xl font-bold text-gray-900">
+          <span class="count-up" data-target="2000">0</span>+
+        </h3>
+        <p class="text-red-500 text-sm">Registrations</p>
       </div>
       <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-5xl font-bold text-gray-900">5K+</h3>
-        <p class="text-red-300 text-sm">Active Members</p>
+        <h3 class="text-5xl font-bold text-gray-900">
+          <span class="count-up" data-target="5000">0</span>+
+        </h3>
+        <p class="text-red-500 text-sm">Active Members</p>
       </div>
       <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-5xl font-bold text-gray-900">30+</h3>
-        <p class="text-red-300 text-sm">Mentors & Judges</p>
+        <h3 class="text-5xl font-bold text-gray-900">
+          <span class="count-up" data-target="30">0</span>+
+        </h3>
+        <p class="text-red-500 text-sm">Mentors & Judges</p>
       </div>
       <div class="bg-gray-50 p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow duration-300 ease-in-out">
-        <h3 class="text-5xl font-bold text-gray-900">50+</h3>
-        <p class="text-red-300 text-sm">Sponsors & Partners</p>
+        <h3 class="text-5xl font-bold text-gray-900">
+          <span class="count-up" data-target="50">0</span>+
+        </h3>
+        <p class="text-red-500 text-sm">Sponsors & Partners</p>
       </div>
     </div>
   </section>
@@ -274,48 +324,59 @@
     </div>
   </section>
 
-  <!-- Contact / Footer -->
   <footer id="contact" class="bg-white text-gray-800 px-6 md:px-20 py-16">
-    <div class="max-w-7xl mx-auto text-center">
-      <h2 class="text-4xl font-bold mb-4 text-gray-900">Join The Revolution</h2>
-      <p class="text-lg mb-8 text-gray-600">Follow us on social media and stay updated with the latest from Hackshastra.
-      </p>
+    <div class="max-w-7xl mx-auto">
+      <div class="text-center mb-10">
+        <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">Join The Revolution</h2>
+        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
+          Follow us on social media and stay updated with the latest from Hackshastra.
+        </p>
+      </div>
 
-      <div class="flex justify-center gap-6 mb-10">
+      <!-- Social Media Icons -->
+      <div class="flex justify-center flex-wrap gap-6 mb-12">
         <a href="#" class="text-red-400 hover:text-red-500 transition-transform transform hover:scale-110">
-          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
             <path
               d="M24 4.6a9.9 9.9 0 01-2.8.8 4.9 4.9 0 002.1-2.7c-.9.5-1.9.9-3 .9a4.9 4.9 0 00-8.4 4.5A13.9 13.9 0 013 3.1a4.9 4.9 0 001.5 6.6A4.9 4.9 0 012.4 9v.1a4.9 4.9 0 003.9 4.8c-.4.1-.8.1-1.3.1-.3 0-.6 0-.9-.1a4.9 4.9 0 004.6 3.4 9.9 9.9 0 01-6.1 2.1c-.4 0-.8 0-1.2-.1a14 14 0 007.5 2.2c9 0 13.9-7.5 13.9-14v-.6a10.2 10.2 0 002.5-2.6z" />
           </svg>
         </a>
         <a href="#" class="text-red-400 hover:text-red-500 transition-transform transform hover:scale-110">
-          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
             <path
-              d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 2 .2 2.5.4a5 5 0 011.7 1.1 5 5 0 011.1 1.7c.2.5.3 1.3.4 2.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 2-.4 2.5a5 5 0 01-1.1 1.7 5 5 0 01-1.7 1.1c-.5.2-1.3.3-2.5.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-2-.2-2.5-.4a5 5 0 01-1.7-1.1 5 5 0 01-1.1-1.7c-.2-.5-.3-1.3-.4-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-2 .4-2.5a5 5 0 011.1-1.7 5 5 0 011.7-1.1c.5-.2 1.3-.3 2.5-.4 1.2-.1 1.6-.1 4.8-.1M12 0C8.7 0 8.3 0 7.1.1 5.9.2 4.9.4 4.1.8a7.3 7.3 0 00-2.7 1.8A7.3 7.3 0 00.8 5.3c-.4.8-.6 1.8-.7 3C0 9.5 0 9.9 0 12s0 2.5.1 3.7c.1 1.2.3 2.2.7 3a7.3 7.3 0 001.8 2.7 7.3 7.3 0 002.7 1.8c.8.4 1.8.6 3 .7 1.2.1 1.6.1 4.9.1s3.7 0 4.9-.1c1.2-.1 2.2-.3 3-.7a7.3 7.3 0 002.7-1.8 7.3 7.3 0 001.8-2.7c.4-.8.6-1.8.7-3 .1-1.2.1-1.6.1-4.9s0-3.7-.1-4.9c-.1-1.2-.3-2.2-.7-3a7.3 7.3 0 00-1.8-2.7 7.3 7.3 0 00-2.7-1.8c-.8-.4-1.8-.6-3-.7C15.7 0 15.3 0 12 0zm0 5.8a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8.1 4 4 0 010 8.1zm6.5-10.7a1.4 1.4 0 11-2.8 0 1.4 1.4 0 012.8 0z" />
+              d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 2 .2 2.5.4a5 5 0 011.7 1.1 5 5 0 011.1 1.7c.2.5.3 1.3.4 2.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 2-.4 2.5a5 5 0 01-1.1 1.7 5 5 0 01-1.7 1.1c-.5.2-1.3.3-2.5.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-2-.2-2.5-.4a5 5 0 01-1.7-1.1 5 5 0 01-1.1-1.7c-.2-.5-.3-1.3-.4-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-2 .4-2.5a5 5 0 011.1-1.7 5 5 0 011.7-1.1c.5-.2 1.3-.3 2.5-.4 1.2-.1 1.6-.1 4.8-.1zm0 3.6a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8.1 4 4 0 010 8.1zm6.5-10.7a1.4 1.4 0 11-2.8 0 1.4 1.4 0 012.8 0z" />
           </svg>
         </a>
         <a href="#" class="text-red-400 hover:text-red-500 transition-transform transform hover:scale-110">
-          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
             <path
               d="M19 0h-14c-2.8 0-5 2.2-5 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5v-14c0-2.8-2.2-5-5-5zm-9 19h-3v-9h3v9zm-1.5-10.3c-1 0-1.5-.7-1.5-1.4 0-.8.6-1.4 1.5-1.4s1.5.6 1.5 1.4c0 .7-.5 1.4-1.5 1.4zm11.5 10.3h-3v-4.7c0-1.2-.4-2.1-1.4-2.1-.8 0-1.3.5-1.6 1-.1.2-.1.5-.1.8v5h-3s.1-8.1 0-9h3v1.3c.4-.6 1.1-1.4 2.6-1.4 1.9 0 3.3 1.3 3.3 4v5.1z" />
           </svg>
         </a>
         <a href="#" class="text-red-400 hover:text-red-500 transition-transform transform hover:scale-110">
-          <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24">
+          <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
             <path
               d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm5 14h-2v-1c0-1.1-.9-2-2-2H8v-2h5c1.7 0 3 1.3 3 3v2z" />
           </svg>
         </a>
       </div>
 
-      <div class="text-sm text-gray-500">
+      <!-- Footer Text -->
+      <div class="text-center text-sm text-gray-500 space-y-2">
         <p>© 2025 <span class="font-semibold">Hackshastra</span>. All rights reserved.</p>
-        <p class="mt-2">Crafted with ❤️ by creators for creators.</p>
+        <p>Crafted with ❤️ by creators for creators.</p>
       </div>
     </div>
   </footer>
+
   <script>
-    gsap.registerPlugin(ScrollTrigger);
+      gsap.registerPlugin(ScrollTrigger);
+    const menuBtn = document.getElementById("menu-btn");
+    const menu = document.getElementById("menu");
+
+    menuBtn.addEventListener("click", () => {
+      menu.classList.toggle("hidden");
+    });
     const countdownDate = new Date("April 30, 2025 10:00:00").getTime();
 
     const countdown = setInterval(() => {
@@ -399,7 +460,7 @@
         trigger: "#about",
         start: "top 80%"
       },
-      opacity: 0,
+      opacity: 1,
       y: 40,
       duration: 0.9,
       stagger: 0.2
@@ -420,7 +481,8 @@
       gsap.from(step, {
         scrollTrigger: {
           trigger: step,
-          start: "top 85%"
+          start: "top 85%",
+          opacity: 0,
         },
         opacity: 0,
         y: 50,
@@ -439,6 +501,52 @@
       y: 40,
       duration: 0.8,
       stagger: 0.2
+    });
+    gsap.from("#mentors .grid > div", {
+      scrollTrigger: {
+        trigger: "#mentors",
+        start: "top 85%"
+      },
+      opacity: 0,
+      y: 40,
+      duration: 0.8,
+      stagger: 0.2
+    });
+    gsap.from(".timeline-item", {
+      scrollTrigger: {
+        trigger: "#timeline",
+        start: "top 85%",
+      },
+      opacity: 0,
+      y: 50,
+      stagger: 0.2,
+      duration: 1,
+      ease: "power3.out"
+    });
+    const counters = document.querySelectorAll(".count-up");
+
+    counters.forEach(counter => {
+      const target = +counter.dataset.target;
+
+      gsap.fromTo(counter,
+        { innerText: 0 },
+        {
+          innerText: target,
+          duration: 2,
+          ease: "power1.out",
+          scrollTrigger: {
+            trigger: counter,
+            start: "top 80%",
+            toggleActions: "play none none none"
+          },
+          snap: { innerText: 1 },
+          onUpdate: function () {
+            counter.innerText = Math.floor(counter.innerText);
+          },
+          onComplete: function () {
+            counter.innerText = target;
+          }
+        });
     });
   </script>
 </body>

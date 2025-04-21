@@ -10,6 +10,8 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
   <script> src = "https://kit.fontawesome.com/your-kit-code.js", crossorigin = "anonymous" ></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
 
   <style>
     * {
@@ -316,7 +318,8 @@
 
   <!-- Sponsors -->
   <section id="sponsors" class="py-20 px-6 md:px-20 bg-white text-center">
-    <h2 class="text-4xl font-bold important-text mb-10">Sponsors & Partners</h2>
+    <h2 class="text-5xl font-bold important-text mb-10 text-red-600"><span class="text-black">Sponsors &</span> Partners
+    </h2>
     <div class="flex flex-wrap justify-center gap-10">
       <img src="https://via.placeholder.com/120x60" alt="Sponsor" class="grayscale hover:grayscale-0 transition">
       <img src="https://via.placeholder.com/120x60" alt="Sponsor" class="grayscale hover:grayscale-0 transition">
@@ -324,50 +327,66 @@
     </div>
   </section>
 
-  <footer id="contact" class="bg-white text-gray-800 px-6 md:px-20 py-16">
-    <div class="max-w-7xl mx-auto">
-      <div class="text-center mb-10">
-        <h2 class="text-4xl md:text-5xl font-extrabold mb-4 text-gray-900">Join The Revolution</h2>
-        <p class="text-lg md:text-xl text-gray-600 max-w-2xl mx-auto">
-          Follow us on social media and stay updated with the latest from Hackshastra.
-        </p>
+  <footer id="contact" class="bg-white text-gray-800 px-6 py-12 relative overflow-hidden">
+    <!-- Glow Effect Background -->
+    <div class="absolute -bottom-20 -left-10 w-96 h-96 bg-red-100 rounded-full blur-3xl opacity-30 animate-pulse-slow"></div>
+  
+    <!-- Main Content -->
+    <div class="mx-auto grid grid-cols-1 md:grid-cols-3 gap-8 text-center md:text-left flex flex-col justify-center">
+      <!-- Column 1: Logo and Call-to-Action -->
+      <div class="flex flex-col md:flex-row items-center md:items-start gap-4">
+        <!-- Logo -->
+        <img src="IMG_1993.PNG" alt="HackShastra Logo" class="h-8 md:h-16 w-auto" />
+        <!-- Text -->
+        <div class="flex flex-col justify-center">
+          <p class="text-lg font-semibold text-gray-900">HackShastra</p>
+          <p class="text-sm text-gray-600 hidden md:block">Unleash Your Divine Potential</p>
+        </div>
       </div>
-
-      <!-- Social Media Icons -->
-      <div class="flex justify-center flex-wrap gap-6 mb-12">
-        <a href="#" class="text-red-400 hover:text-red-500 transition-transform transform hover:scale-110">
-          <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M24 4.6a9.9 9.9 0 01-2.8.8 4.9 4.9 0 002.1-2.7c-.9.5-1.9.9-3 .9a4.9 4.9 0 00-8.4 4.5A13.9 13.9 0 013 3.1a4.9 4.9 0 001.5 6.6A4.9 4.9 0 012.4 9v.1a4.9 4.9 0 003.9 4.8c-.4.1-.8.1-1.3.1-.3 0-.6 0-.9-.1a4.9 4.9 0 004.6 3.4 9.9 9.9 0 01-6.1 2.1c-.4 0-.8 0-1.2-.1a14 14 0 007.5 2.2c9 0 13.9-7.5 13.9-14v-.6a10.2 10.2 0 002.5-2.6z" />
-          </svg>
-        </a>
-        <a href="#" class="text-red-400 hover:text-red-500 transition-transform transform hover:scale-110">
-          <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M12 2.2c3.2 0 3.6 0 4.8.1 1.2.1 2 .2 2.5.4a5 5 0 011.7 1.1 5 5 0 011.1 1.7c.2.5.3 1.3.4 2.5.1 1.2.1 1.6.1 4.8s0 3.6-.1 4.8c-.1 1.2-.2 2-.4 2.5a5 5 0 01-1.1 1.7 5 5 0 01-1.7 1.1c-.5.2-1.3.3-2.5.4-1.2.1-1.6.1-4.8.1s-3.6 0-4.8-.1c-1.2-.1-2-.2-2.5-.4a5 5 0 01-1.7-1.1 5 5 0 01-1.1-1.7c-.2-.5-.3-1.3-.4-2.5C2.2 15.6 2.2 15.2 2.2 12s0-3.6.1-4.8c.1-1.2.2-2 .4-2.5a5 5 0 011.1-1.7 5 5 0 011.7-1.1c.5-.2 1.3-.3 2.5-.4 1.2-.1 1.6-.1 4.8-.1zm0 3.6a6.2 6.2 0 100 12.4 6.2 6.2 0 000-12.4zm0 10.2a4 4 0 110-8.1 4 4 0 010 8.1zm6.5-10.7a1.4 1.4 0 11-2.8 0 1.4 1.4 0 012.8 0z" />
-          </svg>
-        </a>
-        <a href="#" class="text-red-400 hover:text-red-500 transition-transform transform hover:scale-110">
-          <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M19 0h-14c-2.8 0-5 2.2-5 5v14c0 2.8 2.2 5 5 5h14c2.8 0 5-2.2 5-5v-14c0-2.8-2.2-5-5-5zm-9 19h-3v-9h3v9zm-1.5-10.3c-1 0-1.5-.7-1.5-1.4 0-.8.6-1.4 1.5-1.4s1.5.6 1.5 1.4c0 .7-.5 1.4-1.5 1.4zm11.5 10.3h-3v-4.7c0-1.2-.4-2.1-1.4-2.1-.8 0-1.3.5-1.6 1-.1.2-.1.5-.1.8v5h-3s.1-8.1 0-9h3v1.3c.4-.6 1.1-1.4 2.6-1.4 1.9 0 3.3 1.3 3.3 4v5.1z" />
-          </svg>
-        </a>
-        <a href="#" class="text-red-400 hover:text-red-500 transition-transform transform hover:scale-110">
-          <svg class="w-7 h-7 fill-current" viewBox="0 0 24 24">
-            <path
-              d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10 10-4.5 10-10S17.5 2 12 2zm5 14h-2v-1c0-1.1-.9-2-2-2H8v-2h5c1.7 0 3 1.3 3 3v2z" />
-          </svg>
-        </a>
+  
+      <!-- Column 2: Social Media Links -->
+      <div class="flex flex-col items-center md:items-start">
+        <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-4">Connect with Us</h3>
+        <div class="flex justify-center md:justify-start gap-5">
+          <a href="#" class="transition-all hover:scale-110 hover:text-red-500">
+            <i class="fab fa-facebook-f text-red-400 hover:drop-shadow-md text-xl"></i>
+          </a>
+          <a href="#" class="transition-all hover:scale-110 hover:text-red-500">
+            <i class="fab fa-twitter text-red-400 hover:drop-shadow-md text-xl"></i>
+          </a>
+          <a href="#" class="transition-all hover:scale-110 hover:text-red-500">
+            <i class="fab fa-instagram text-red-400 hover:drop-shadow-md text-xl"></i>
+          </a>
+          <a href="#" class="transition-all hover:scale-110 hover:text-red-500">
+            <i class="fab fa-linkedin-in text-red-400 hover:drop-shadow-md text-xl"></i>
+          </a>
+        </div>
       </div>
-
-      <!-- Footer Text -->
-      <div class="text-center text-sm text-gray-500 space-y-2">
-        <p>© 2025 <span class="font-semibold">Hackshastra</span>. All rights reserved.</p>
-        <p>Crafted with ❤️ by creators for creators.</p>
+  
+      <!-- Column 3: Footer Navigation -->
+      <div class="flex flex-col items-center md:items-start">
+        <h3 class="text-lg md:text-xl font-semibold text-gray-900 mb-4">Explore More</h3>
+        <ul class="list-none text-gray-600 space-y-2">
+          <li><a href="#about" class="hover:text-red-500 transition">About Us</a></li>
+          <li><a href="#timeline" class="hover:text-red-500 transition">Timeline</a></li>
+          <li><a href="#judges" class="hover:text-red-500 transition">Judges</a></li>
+          <li><a href="#mentors" class="hover:text-red-500 transition">Mentors</a></li>
+          <li><a href="#stats" class="hover:text-red-500 transition">Stats</a></li>
+          <li><a href="#contact" class="hover:text-red-500 transition">Contact</a></li>
+        </ul>
       </div>
     </div>
+  
+    <!-- Divider -->
+    <hr class="my-8 border-gray-200">
+  
+    <!-- Copyright Section -->
+    <div class="flex flex-col md:flex-row justify-center items-center text-sm text-gray-500 text-center">
+      <p>© 2025 <span class="font-semibold text-red-500">HackShastra</span>. All rights reserved.</p>
+      <a href="#" class="hover:text-red-500 transition ml-4">Terms of Service</a>
+    </div>
   </footer>
+
 
   <script>
       gsap.registerPlugin(ScrollTrigger);
@@ -377,7 +396,7 @@
     menuBtn.addEventListener("click", () => {
       menu.classList.toggle("hidden");
     });
-    const countdownDate = new Date("April 30, 2025 10:00:00").getTime();
+    const countdownDate = new Date("June 1, 2025 10:00:00").getTime();
 
     const countdown = setInterval(() => {
       const now = new Date().getTime();

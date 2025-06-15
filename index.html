@@ -22,15 +22,11 @@
     body {
       font-family: 'Helvetica', sans-serif;
       background-color: white;
-      /* Set background to white */
       color: black;
-      /* Set text color to black */
-      /* Prevent scrollbars from interfering with animation */
     }
 
     .important-text {
       color: red;
-      /* Set important text to red */
     }
 
     .time-box {
@@ -86,6 +82,422 @@
     .animate-fade-in-up {
       animation: fadeInUp 0.5s ease-out forwards;
     }
+
+    /* Theme Card Styles */
+    .theme-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(248, 250, 252, 0.9) 100%);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .theme-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.1), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .theme-card:hover::before {
+      left: 100%;
+    }
+
+    .theme-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      border-color: rgba(220, 38, 38, 0.3);
+    }
+
+    .theme-icon {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      transition: all 0.3s ease;
+    }
+
+    .theme-card:hover .theme-icon {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+    }
+
+    .theme-title {
+      background: linear-gradient(135deg, #1f2937, #374151);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: all 0.3s ease;
+    }
+
+    .theme-card:hover .theme-title {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .floating-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .floating-shape {
+      position: absolute;
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .floating-shape:nth-child(1) {
+      top: 10%;
+      left: 10%;
+      animation-delay: 0s;
+    }
+
+    .floating-shape:nth-child(2) {
+      top: 65%;
+      right: 10%;
+      animation-delay: 2s;
+    }
+
+    .floating-shape:nth-child(3) {
+      bottom: 20%;
+      left: 10%;
+      animation-delay: 4s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      33% {
+        transform: translateY(-20px) rotate(5deg);
+      }
+
+      66% {
+        transform: translateY(10px) rotate(-3deg);
+      }
+    }
+
+    /* Add this to your existing <style> section */
+    .magnetic-btn {
+      position: relative;
+      transform-style: preserve-3d;
+      transition: transform 0.1s ease-out;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .magnetic-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+          rgba(255, 255, 255, 0.2) 0%,
+          rgba(255, 255, 255, 0.1) 40%,
+          transparent 70%);
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+
+    .magnetic-btn:hover::before {
+      opacity: 1;
+    }
+
+    .magnetic-btn.primary {
+      box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+      transition: all 0.1s ease-out, box-shadow 0.3s ease;
+    }
+
+    .magnetic-btn.primary:hover {
+      box-shadow: 0 8px 25px rgba(220, 38, 38, 0.4),
+        0 0 20px rgba(220, 38, 38, 0.2);
+    }
+
+    .magnetic-btn.secondary {
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+      transition: all 0.1s ease-out, box-shadow 0.3s ease;
+    }
+
+    .magnetic-btn.secondary:hover {
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15),
+        0 0 20px rgba(255, 255, 255, 0.1);
+    }
+
+    .magnetic-btn.clicked {
+      animation: magneticPulse 0.6s ease-out;
+    }
+
+    @keyframes magneticPulse {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0.7);
+      }
+
+      50% {
+        transform: scale(0.98);
+      }
+
+      70% {
+        box-shadow: 0 0 0 10px rgba(220, 38, 38, 0);
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(220, 38, 38, 0);
+      }
+    }
+
+    .magnetic-btn .ripple {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.6);
+      pointer-events: none;
+      transform: scale(0);
+      animation: rippleEffect 0.6s linear;
+    }
+
+    @keyframes rippleEffect {
+      to {
+        transform: scale(4);
+        opacity: 0;
+      }
+    }
+
+    /* Team Card Styles */
+    .team-card {
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(248, 250, 252, 0.95) 100%);
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .team-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(220, 38, 38, 0.08), transparent);
+      transition: left 0.6s ease;
+    }
+
+    .team-card:hover::before {
+      left: 100%;
+    }
+
+    .team-card:hover {
+      transform: translateY(-12px) scale(1.03);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25), 0 0 30px rgba(220, 38, 38, 0.1);
+      border-color: rgba(220, 38, 38, 0.2);
+    }
+
+    .team-photo {
+      position: relative;
+      overflow: hidden;
+      transition: all 0.4s ease;
+    }
+
+    .team-card:hover .team-photo {
+      transform: scale(1.1);
+    }
+
+    .team-photo::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: linear-gradient(135deg, rgba(220, 38, 38, 0.1), rgba(239, 68, 68, 0.1));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .team-card:hover .team-photo::after {
+      opacity: 1;
+    }
+
+    .team-name {
+      background: linear-gradient(135deg, #1f2937, #374151);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      transition: all 0.3s ease;
+    }
+
+    .team-card:hover .team-name {
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .social-btn {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .social-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      border-radius: 50%;
+      transform: scale(0);
+      transition: transform 0.3s ease;
+    }
+
+    .social-btn:hover::before {
+      transform: scale(1);
+    }
+
+    .social-btn:hover {
+      transform: translateY(-2px) scale(1.1);
+    }
+
+    .social-btn.instagram {
+      background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+      color: white;
+    }
+
+    .social-btn.instagram::before {
+      background: linear-gradient(45deg, #bc1888 0%, #cc2366 25%, #dc2743 50%, #e6683c 75%, #f09433 100%);
+    }
+
+    .social-btn.github {
+      background: linear-gradient(135deg, #333, #24292e);
+      color: white;
+    }
+
+    .social-btn.github::before {
+      background: linear-gradient(135deg, #24292e, #000);
+    }
+
+    .social-btn.linkedin {
+      background: linear-gradient(135deg, #0077b5, #00a0dc);
+      color: white;
+    }
+
+    .social-btn.linkedin::before {
+      background: linear-gradient(135deg, #00a0dc, #0077b5);
+    }
+
+    .floating-shapes {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .floating-shape {
+      position: absolute;
+      opacity: 0.05;
+      animation: float 8s ease-in-out infinite;
+    }
+
+    .floating-shape:nth-child(1) {
+      top: 15%;
+      left: 5%;
+      animation-delay: 0s;
+    }
+
+    .floating-shape:nth-child(2) {
+      top: 70%;
+      right: 8%;
+      animation-delay: 3s;
+    }
+
+    .floating-shape:nth-child(3) {
+      bottom: 25%;
+      left: 15%;
+      animation-delay: 6s;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px) rotate(0deg);
+      }
+
+      33% {
+        transform: translateY(-25px) rotate(5deg);
+      }
+
+      66% {
+        transform: translateY(15px) rotate(-3deg);
+      }
+    }
+
+    .section-bg {
+      background: linear-gradient(135deg, #f8fafc 0%, #ffffff 50%, #f1f5f9 100%);
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .animate-fade-in-up {
+      animation: fadeInUp 0.6s ease-out forwards;
+    }
+
+    .team-role {
+      color: #dc2626;
+      transition: all 0.3s ease;
+    }
+
+    .team-card:hover .team-role {
+      color: #ef4444;
+      transform: translateY(-2px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .team-card {
+        margin-bottom: 1rem;
+      }
+
+      .social-btn {
+        width: 36px;
+        height: 36px;
+      }
+    }
   </style>
 </head>
 
@@ -115,7 +527,6 @@
     </nav>
   </header>
 
-
   <!-- Hero Section -->
   <section class="text-center py-20 md:py-16 px-4 bg-custom-gradient">
     <img src="IMG_1993.PNG" alt="Hackshastra Logo" class="mx-auto w-24 sm:w-32 md:w-40">
@@ -124,13 +535,12 @@
     <p class="text-base sm:text-lg md:text-xl mt-6 max-w-2xl mx-auto text-black">Code Like a God, Innovate Like a Sage,
       and Conquer Challenges — Unleash Your Divine Potential</p>
     <a href="https://chat.whatsapp.com/DmZyGWuHdc28s1HMu1thuN"
-      class="group inline-flex items-center gap-2 px-5 md:px-6 py-2 md:py-3 bg-red-600 hover:bg-red-700 transition rounded-full text-white font-semibold text-base md:text-lg shadow-lg hover:scale-105 duration-300 cursor-pointer">
+      class="group inline-flex items-center mt-4 gap-2 px-5 md:px-6 py-2 md:py-3 bg-red-600 hover:bg-red-700 transition rounded-full text-white font-semibold text-base md:text-lg shadow-lg hover:scale-105 duration-300">
       Join Our Community<svg class="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform duration-300"
         fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
       </svg> </a>
   </section>
-
 
   <section id="about" class="relative py-20 md:py-28 px-4 md:px-24 mt-10 overflow-hidden">
     <div class="absolute -top-10 -left-10 w-60 h-60 md:w-72 md:h-72 rounded-full blur-3xl opacity-50 z-0"></div>
@@ -145,7 +555,7 @@
           website or deploying advanced AI, Hackshastra is your platform to shine like a <span
             class="text-red-500 font-semibold">god-tier hacker</span>. </p>
         <button
-          class="group inline-flex items-center mb-4 gap-2 px-5 md:px-6 py-2 md:py-3 bg-red-600 hover:bg-red-700 transition rounded-full text-white font-semibold text-base md:text-lg shadow-lg hover:scale-105 duration-300">
+          class="group inline-flex items-center mt-4 gap-2 px-5 md:px-6 py-2 md:py-3 bg-red-600 hover:bg-red-700 transition rounded-full text-white font-semibold text-base md:text-lg shadow-lg hover:scale-105 duration-300">
           Learn More <svg class="w-4 h-4 md:w-5 md:h-5 group-hover:translate-x-1 transition-transform duration-300"
             fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -159,15 +569,170 @@
     </div>
   </section>
 
+  <!-- Themes Section -->
+  <section id="themes"
+    class="relative py-20 md:py-24 px-4 md:px-20 bg-gradient-to-br from-gray-50 to-white overflow-hidden">
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+      <div class="floating-shape w-32 h-32 bg-red-500 rounded-full"></div>
+      <div class="floating-shape w-24 h-24 bg-blue-500 rounded-full"></div>
+      <div class="floating-shape w-28 h-28 bg-purple-500 rounded-full"></div>
+    </div>
 
+    <div class="relative z-10">
+      <div class="text-center mb-16">
+        <h2 class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-gray-900 mb-6">
+          Choose Your <span class="text-red-600">Divine Path</span>
+        </h2>
+        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          Select from our carefully curated themes and embark on a journey of innovation. Each path offers unique
+          challenges and opportunities to showcase your divine coding abilities.
+        </p>
+      </div>
 
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
+        <!-- AI/ML Theme -->
+        <div class="theme-card rounded-2xl p-6 text-center group">
+          <div class="theme-icon w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-white">
+            <i class="fas fa-brain text-2xl"></i>
+          </div>
+          <h3 class="theme-title text-xl font-bold mb-3">AI/ML</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Harness the power of artificial intelligence and machine learning to create intelligent solutions that think
+            and learn.
+          </p>
+          <div
+            class="absolute top-4 right-4 w-3 h-3 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </div>
+
+        <!-- Cybersecurity Theme -->
+        <div class="theme-card rounded-2xl p-6 text-center group">
+          <div class="theme-icon w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-white">
+            <i class="fas fa-shield-alt text-2xl"></i>
+          </div>
+          <h3 class="theme-title text-xl font-bold mb-3">Cybersecurity</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Build secure fortresses in the digital realm. Protect, defend, and secure the future of technology.
+          </p>
+          <div
+            class="absolute top-4 right-4 w-3 h-3 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </div>
+
+        <!-- Web Dev Theme -->
+        <div class="theme-card rounded-2xl p-6 text-center group">
+          <div class="theme-icon w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-white">
+            <i class="fas fa-code text-2xl"></i>
+          </div>
+          <h3 class="theme-title text-xl font-bold mb-3">Web Dev</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Craft beautiful, responsive web experiences that captivate users and deliver exceptional digital journeys.
+          </p>
+          <div
+            class="absolute top-4 right-4 w-3 h-3 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </div>
+
+        <!-- App Dev Theme -->
+        <div class="theme-card rounded-2xl p-6 text-center group">
+          <div class="theme-icon w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-white">
+            <i class="fas fa-mobile-alt text-2xl"></i>
+          </div>
+          <h3 class="theme-title text-xl font-bold mb-3">App Dev</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Create powerful mobile applications that fit in your pocket but pack infinite possibilities.
+          </p>
+          <div
+            class="absolute top-4 right-4 w-3 h-3 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </div>
+
+        <!-- Blockchain & Web3 Theme -->
+        <div class="theme-card rounded-2xl p-6 text-center group">
+          <div class="theme-icon w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-white">
+            <i class="fas fa-link text-2xl"></i>
+          </div>
+          <h3 class="theme-title text-xl font-bold mb-3">Blockchain & Web3</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Pioneer the decentralized future. Build on blockchain and shape the next generation of the internet.
+          </p>
+          <div
+            class="absolute top-4 right-4 w-3 h-3 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </div>
+
+        <!-- AR/VR Theme -->
+        <div class="theme-card rounded-2xl p-6 text-center group">
+          <div class="theme-icon w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-white">
+            <i class="fas fa-vr-cardboard text-2xl"></i>
+          </div>
+          <h3 class="theme-title text-xl font-bold mb-3">AR/VR</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Bend reality to your will. Create immersive experiences that transport users to new dimensions.
+          </p>
+          <div
+            class="absolute top-4 right-4 w-3 h-3 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </div>
+
+        <!-- Game Dev Theme -->
+        <div class="theme-card rounded-2xl p-6 text-center group">
+          <div class="theme-icon w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-white">
+            <i class="fas fa-gamepad text-2xl"></i>
+          </div>
+          <h3 class="theme-title text-xl font-bold mb-3">Game Dev</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Design worlds, craft stories, and create epic adventures that players will remember forever.
+          </p>
+          <div
+            class="absolute top-4 right-4 w-3 h-3 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </div>
+
+        <!-- Open Innovation Theme -->
+        <div class="theme-card rounded-2xl p-6 text-center group">
+          <div class="theme-icon w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center text-white">
+            <i class="fas fa-lightbulb text-2xl"></i>
+          </div>
+          <h3 class="theme-title text-xl font-bold mb-3">Open Innovation</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            Think outside the box. Create something entirely new that doesn't fit traditional categories.
+          </p>
+          <div
+            class="absolute top-4 right-4 w-3 h-3 bg-red-500 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+          </div>
+        </div>
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center mt-16">
+        <div class="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 max-w-2xl mx-auto">
+          <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
+            Ready to Begin Your Divine Journey?
+          </h3>
+          <p class="text-red-100 mb-6">
+            Choose your theme and start building something extraordinary that will leave the judges in awe.
+          </p>
+          <a href="https://chat.whatsapp.com/DmZyGWuHdc28s1HMu1thuN"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-white text-red-600 font-semibold rounded-full hover:bg-gray-100 transition duration-300 hover:scale-105">
+            Register Now
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline Section -->
   <section id="timeline" class="py-20 md:py-24 px-4 md:px-20">
     <h2 class="text-5xl sm:text-5xl md:text-6xl font-extrabold leading-tight text-center mb-16 md:mb-24 text-gray-900">
       Event <span class="text-red-600">Timeline</span></h2>
     <div class="relative h-2 w-full max-w-4xl bg-gray-200 rounded-full mb-12 md:mb-16 mx-auto">
       <div class="absolute top-0 left-0 h-2 bg-red-600 rounded-full" style="width: 23%;"></div>
     </div>
-    <!-- Timeline Section -->
     <div id="timeline"
       class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 md:gap-6 max-w-7xl mx-auto px-4 py-16">
       <div class="timeline-item flex flex-col items-center text-center px-2">
@@ -186,7 +751,7 @@
           2
         </div>
         <h3 class="mt-4 text-base md:text-xl font-semibold text-gray-800">Registrations Close</h3>
-        <p class="mt-1 text-sm text-gray-600">20 May 2025</p>
+        <p class="mt-1 text-sm text-gray-600">20 July 2025</p>
         <p class="text-xs mt-1 text-gray-500">Last chance to enter the tech-war!</p>
       </div>
 
@@ -196,7 +761,7 @@
           3
         </div>
         <h3 class="mt-4 text-base md:text-xl font-semibold text-gray-800">Online Round</h3>
-        <p class="mt-1 text-sm text-gray-600">1 – 3 June 2025</p>
+        <p class="mt-1 text-sm text-gray-600">20 – 23 July 2025</p>
         <p class="text-xs mt-1 text-gray-500">Submit your pitch decks. Only the sharpest move forward.</p>
       </div>
 
@@ -206,7 +771,7 @@
           4
         </div>
         <h3 class="mt-4 text-base md:text-xl font-semibold text-gray-800">Offline Hackathon</h3>
-        <p class="mt-1 text-sm text-gray-600">14 June 2025</p>
+        <p class="mt-1 text-sm text-gray-600">25 July 2025</p>
         <p class="text-xs mt-1 text-gray-500">Show up, build live, and compete in the final divine battle.</p>
       </div>
     </div>
@@ -329,6 +894,220 @@
     </div>
   </section>
 
+  <!-- Teams Section -->
+  <section id="teams" class="relative py-20 md:py-24 px-4 md:px-20 section-bg overflow-hidden">
+    <!-- Floating Background Shapes -->
+    <div class="floating-shapes">
+      <div class="floating-shape w-40 h-40 bg-red-500 rounded-full"></div>
+      <div class="floating-shape w-32 h-32 bg-blue-500 rounded-full"></div>
+      <div class="floating-shape w-36 h-36 bg-purple-500 rounded-full"></div>
+    </div>
+
+    <div class="relative z-10">
+      <!-- Section Header -->
+      <div class="text-center mb-16">
+        <h2 class="text-5xl sm:text-6xl md:text-7xl font-extrabold text-gray-900 mb-6">
+          Meet Our <span class="text-red-600">Team</span>
+        </h2>
+        <p class="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          The brilliant minds behind HackShastra, working tirelessly to create an unforgettable experience for all
+          participants.
+        </p>
+      </div>
+
+      <!-- Team Grid -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 max-w-7xl mx-auto">
+
+        <!-- Team Member 1 - Founder -->
+        <div class="team-card rounded-2xl p-6 text-center group">
+          <div class="team-photo w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face"
+              alt="Team Member" class="w-full h-full object-cover">
+          </div>
+          <h3 class="team-name text-xl font-bold mb-2">John Doe</h3>
+          <p class="team-role text-sm font-semibold mb-4">Founder & CEO</p>
+          <div class="flex justify-center gap-3">
+            <a href="#" class="social-btn instagram">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="social-btn github">
+              <i class="fab fa-github text-sm"></i>
+            </a>
+            <a href="#" class="social-btn linkedin">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Team Member 2 - CTO -->
+        <div class="team-card rounded-2xl p-6 text-center group">
+          <div class="team-photo w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1494790108755-2616b612b77c?w=150&h=150&fit=crop&crop=face"
+              alt="Team Member" class="w-full h-full object-cover">
+          </div>
+          <h3 class="team-name text-xl font-bold mb-2">Jane Smith</h3>
+          <p class="team-role text-sm font-semibold mb-4">Chief Technology Officer</p>
+          <div class="flex justify-center gap-3">
+            <a href="#" class="social-btn instagram">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="social-btn github">
+              <i class="fab fa-github text-sm"></i>
+            </a>
+            <a href="#" class="social-btn linkedin">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Team Member 3 - Lead Developer -->
+        <div class="team-card rounded-2xl p-6 text-center group">
+          <div class="team-photo w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face"
+              alt="Team Member" class="w-full h-full object-cover">
+          </div>
+          <h3 class="team-name text-xl font-bold mb-2">Alex Johnson</h3>
+          <p class="team-role text-sm font-semibold mb-4">Lead Developer</p>
+          <div class="flex justify-center gap-3">
+            <a href="#" class="social-btn instagram">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="social-btn github">
+              <i class="fab fa-github text-sm"></i>
+            </a>
+            <a href="#" class="social-btn linkedin">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Team Member 4 - Design Lead -->
+        <div class="team-card rounded-2xl p-6 text-center group">
+          <div class="team-photo w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face"
+              alt="Team Member" class="w-full h-full object-cover">
+          </div>
+          <h3 class="team-name text-xl font-bold mb-2">Sarah Williams</h3>
+          <p class="team-role text-sm font-semibold mb-4">Design Lead</p>
+          <div class="flex justify-center gap-3">
+            <a href="#" class="social-btn instagram">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="social-btn github">
+              <i class="fab fa-github text-sm"></i>
+            </a>
+            <a href="#" class="social-btn linkedin">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Team Member 5 - Marketing Head -->
+        <div class="team-card rounded-2xl p-6 text-center group">
+          <div class="team-photo w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face"
+              alt="Team Member" class="w-full h-full object-cover">
+          </div>
+          <h3 class="team-name text-xl font-bold mb-2">Mike Chen</h3>
+          <p class="team-role text-sm font-semibold mb-4">Marketing Head</p>
+          <div class="flex justify-center gap-3">
+            <a href="#" class="social-btn instagram">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="social-btn github">
+              <i class="fab fa-github text-sm"></i>
+            </a>
+            <a href="#" class="social-btn linkedin">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Team Member 6 - Operations Manager -->
+        <div class="team-card rounded-2xl p-6 text-center group">
+          <div class="team-photo w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?w=150&h=150&fit=crop&crop=face"
+              alt="Team Member" class="w-full h-full object-cover">
+          </div>
+          <h3 class="team-name text-xl font-bold mb-2">Emily Davis</h3>
+          <p class="team-role text-sm font-semibold mb-4">Operations Manager</p>
+          <div class="flex justify-center gap-3">
+            <a href="#" class="social-btn instagram">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="social-btn github">
+              <i class="fab fa-github text-sm"></i>
+            </a>
+            <a href="#" class="social-btn linkedin">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Team Member 7 - Community Manager -->
+        <div class="team-card rounded-2xl p-6 text-center group">
+          <div class="team-photo w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1507591064344-4c6ce005b128?w=150&h=150&fit=crop&crop=face"
+              alt="Team Member" class="w-full h-full object-cover">
+          </div>
+          <h3 class="team-name text-xl font-bold mb-2">David Rodriguez</h3>
+          <p class="team-role text-sm font-semibold mb-4">Community Manager</p>
+          <div class="flex justify-center gap-3">
+            <a href="#" class="social-btn instagram">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="social-btn github">
+              <i class="fab fa-github text-sm"></i>
+            </a>
+            <a href="#" class="social-btn linkedin">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+        <!-- Team Member 8 - Event Coordinator -->
+        <div class="team-card rounded-2xl p-6 text-center group">
+          <div class="team-photo w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face"
+              alt="Team Member" class="w-full h-full object-cover">
+          </div>
+          <h3 class="team-name text-xl font-bold mb-2">Lisa Park</h3>
+          <p class="team-role text-sm font-semibold mb-4">Event Coordinator</p>
+          <div class="flex justify-center gap-3">
+            <a href="#" class="social-btn instagram">
+              <i class="fab fa-instagram text-sm"></i>
+            </a>
+            <a href="#" class="social-btn github">
+              <i class="fab fa-github text-sm"></i>
+            </a>
+            <a href="#" class="social-btn linkedin">
+              <i class="fab fa-linkedin-in text-sm"></i>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Call to Action -->
+      <div class="text-center mt-16">
+        <div class="bg-gradient-to-r from-red-600 to-red-700 rounded-2xl p-8 max-w-2xl mx-auto">
+          <h3 class="text-2xl md:text-3xl font-bold text-white mb-4">
+            Want to Join Our Team?
+          </h3>
+          <p class="text-red-100 mb-6">
+            We're always looking for passionate individuals to help us create amazing hackathon experiences.
+          </p>
+          <a href="mailto:team@hackshastra.com"
+            class="inline-flex items-center gap-2 px-6 py-3 bg-white text-red-600 font-semibold rounded-full hover:bg-gray-100 transition duration-300 hover:scale-105">
+            Get In Touch
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- Sponsors -->
   <section id="sponsors" class="py-16 px-4 sm:px-8 md:px-20 bg-white text-center">
@@ -351,7 +1130,6 @@
       </div>
     </div>
   </section>
-
 
   <footer id="contact" class="bg-white text-white px-6 py-12 relative overflow-hidden">
     <div class="w-full min-h-[50vh] bg-black rounded-3xl flex flex-col lg:flex-row text-gray-200">
@@ -431,8 +1209,6 @@
     </div>
   </footer>
 
-
-
   <script>
       gsap.registerPlugin(ScrollTrigger);
 
@@ -455,7 +1231,7 @@
     });
 
     // COUNTDOWN
-    const countdownDate = new Date("June 1, 2025 10:00:00").getTime();
+    const countdownDate = new Date("July 25, 2025 10:00:00").getTime();
 
     const countdown = setInterval(() => {
       const now = new Date().getTime();
@@ -472,6 +1248,86 @@
       document.getElementById("minutes").textContent = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
       document.getElementById("seconds").textContent = Math.floor((distance % (1000 * 60)) / 1000);
     }, 1000);
+
+    gsap.registerPlugin(ScrollTrigger);
+
+    // Teams Section Animation
+    gsap.from("#teams h2", {
+      scrollTrigger: {
+        trigger: "#teams",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      },
+      opacity: 0,
+      y: 50,
+      duration: 1,
+      ease: "power3.out"
+    });
+
+    gsap.from("#teams p", {
+      scrollTrigger: {
+        trigger: "#teams",
+        start: "top 80%",
+        toggleActions: "play none none reverse"
+      },
+      opacity: 0,
+      y: 30,
+      duration: 0.8,
+      delay: 0.2,
+      ease: "power3.out"
+    });
+
+    // Team Cards Animation
+    gsap.utils.toArray(".team-card").forEach((card, i) => {
+      gsap.from(card, {
+        scrollTrigger: {
+          trigger: card,
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        },
+        opacity: 0,
+        y: 50,
+        scale: 0.9,
+        duration: 0.6,
+        delay: i * 0.1,
+        ease: "back.out(1.7)"
+      });
+    });
+
+    // Social Button Hover Effects
+    document.querySelectorAll('.social-btn').forEach(btn => {
+      btn.addEventListener('mouseenter', () => {
+        gsap.to(btn, {
+          scale: 1.15,
+          rotation: 5,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+
+      btn.addEventListener('mouseleave', () => {
+        gsap.to(btn, {
+          scale: 1,
+          rotation: 0,
+          duration: 0.3,
+          ease: "power2.out"
+        });
+      });
+    });
+
+    // Call to Action Animation
+    gsap.from("#teams .bg-gradient-to-r", {
+      scrollTrigger: {
+        trigger: "#teams .bg-gradient-to-r",
+        start: "top 85%",
+        toggleActions: "play none none reverse"
+      },
+      opacity: 0,
+      y: 40,
+      scale: 0.95,
+      duration: 0.8,
+      ease: "power3.out"
+    });
 
     // MOUSE CURSOR EFFECT
     document.addEventListener('mousemove', (event) => {
@@ -651,6 +1507,117 @@
       ease: "power3.out",
       stagger: 0.3
     });
+
+    // Add this to your existing <script> section at the end
+
+    // Magnetic Button Effect
+    class MagneticButton {
+      constructor(element) {
+        this.element = element;
+        this.magnetStrength = parseFloat(element.dataset.magnetStrength) || 0.3;
+        this.magnetRadius = parseFloat(element.dataset.magnetRadius) || 100;
+        this.init();
+      }
+
+      init() {
+        this.element.classList.add('magnetic-btn');
+        this.element.addEventListener('mouseenter', this.onMouseEnter.bind(this));
+        this.element.addEventListener('mousemove', this.onMouseMove.bind(this));
+        this.element.addEventListener('mouseleave', this.onMouseLeave.bind(this));
+        this.element.addEventListener('click', this.onClick.bind(this));
+      }
+
+      onMouseEnter(e) {
+        this.element.style.transition = 'transform 0.1s ease-out';
+      }
+
+      onMouseMove(e) {
+        const rect = this.element.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+
+        const deltaX = e.clientX - centerX;
+        const deltaY = e.clientY - centerY;
+        const distance = Math.sqrt(deltaX * deltaX + deltaY * deltaY);
+
+        if (distance < this.magnetRadius) {
+          const pullX = deltaX * this.magnetStrength * (1 - distance / this.magnetRadius);
+          const pullY = deltaY * this.magnetStrength * (1 - distance / this.magnetRadius);
+
+          this.element.style.transform = `translate3d(${pullX}px, ${pullY}px, 0) scale(1.05)`;
+
+          const mouseXPercent = ((e.clientX - rect.left) / rect.width) * 100;
+          const mouseYPercent = ((e.clientY - rect.top) / rect.height) * 100;
+
+          this.element.style.setProperty('--mouse-x', `${mouseXPercent}%`);
+          this.element.style.setProperty('--mouse-y', `${mouseYPercent}%`);
+        }
+      }
+
+      onMouseLeave(e) {
+        this.element.style.transition = 'transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        this.element.style.transform = 'translate3d(0, 0, 0) scale(1)';
+        this.element.style.removeProperty('--mouse-x');
+        this.element.style.removeProperty('--mouse-y');
+      }
+
+      onClick(e) {
+        this.element.classList.add('clicked');
+        this.createRipple(e);
+        setTimeout(() => this.element.classList.remove('clicked'), 600);
+      }
+
+      createRipple(e) {
+        const rect = this.element.getBoundingClientRect();
+        const ripple = document.createElement('span');
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+
+        ripple.classList.add('ripple');
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+
+        this.element.appendChild(ripple);
+        setTimeout(() => ripple.remove(), 600);
+      }
+    }
+
+    // Initialize magnetic buttons
+    function initializeMagneticButtons() {
+      const buttonSelectors = [
+        'a[href*="whatsapp"]',
+        'button',
+        '.group',
+        'a[class*="bg-red"]',
+        'a[class*="hover:bg-red"]',
+        '.theme-card'
+      ];
+
+      buttonSelectors.forEach(selector => {
+        const elements = document.querySelectorAll(selector);
+        elements.forEach(element => {
+          if (!element.classList.contains('magnetic-btn')) {
+            if (element.classList.contains('bg-red-600') ||
+              element.classList.contains('bg-red-700') ||
+              element.href?.includes('whatsapp')) {
+              element.classList.add('primary');
+            } else {
+              element.classList.add('secondary');
+            }
+
+            element.dataset.magnetStrength = element.classList.contains('theme-card') ? '0.2' : '0.3';
+            element.dataset.magnetRadius = element.classList.contains('theme-card') ? '80' : '100';
+
+            new MagneticButton(element);
+          }
+        });
+      });
+    }
+
+    // Initialize when page loads
+    initializeMagneticButtons();
   </script>
 
 </body>

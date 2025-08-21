@@ -546,16 +546,10 @@ body {
     image-rendering: -webkit-optimize-contrast;
     transform: translateZ(0);
     will-change: transform;
-    background: linear-gradient(45deg, #667eea 0%, #764ba2 100%);
 }
 
 .marquee-group img:hover {
     transform: scale(1.05) translateZ(0);
-}
-
-/* Pause on hover */
-.marquee-row:hover .marquee-content {
-    animation-play-state: paused;
 }
 
 /* Optimized animations with sub-pixel precision */

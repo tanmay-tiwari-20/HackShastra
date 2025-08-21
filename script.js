@@ -411,32 +411,3 @@ function initializeMagneticButtons() {
 
 // Initialize when page loads
 initializeMagneticButtons();
-
-document.addEventListener("DOMContentLoaded", () => {
-  const marquees = [
-    { el: document.getElementById("marquee1"), speed: -1 }, // left to right
-    { el: document.getElementById("marquee2"), speed: 1 }, // right to left
-  ];
-
-  marquees.forEach(({ el, speed }) => {
-    let scrollAmount = 0;
-    let isHovered = false;
-
-
-    const startScrolling = () => {
-      if (!isHovered) {
-        scrollAmount += speed;
-        if (Math.abs(scrollAmount) >= el.scrollWidth / 2) {
-          scrollAmount = 0;
-        }
-        el.style.transform = `translateX(${scrollAmount}px)`;
-      }
-      requestAnimationFrame(startScrolling);
-    };
-
-    el.addEventListener("mouseover", () => (isHovered = true));
-    el.addEventListener("mouseout", () => (isHovered = false));
-
-    startScrolling();
-  });
-});

@@ -422,8 +422,6 @@ document.addEventListener("DOMContentLoaded", () => {
     let scrollAmount = 0;
     let isHovered = false;
 
-    // Duplicate images for infinite scroll
-    el.innerHTML += el.innerHTML;
 
     const startScrolling = () => {
       if (!isHovered) {

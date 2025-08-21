@@ -501,13 +501,6 @@ body {
     animation: gradient 5s linear infinite;
 }
 
-.marquee {
-    overflow-x: clip;
-    white-space: nowrap;
-    position: relative;
-    width: 100%;
-}
-
 .marquee-wrap {
   display: grid;
   gap: 2rem;

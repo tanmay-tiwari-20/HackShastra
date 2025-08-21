@@ -411,3 +411,16 @@ function initializeMagneticButtons() {
 
 // Initialize when page loads
 initializeMagneticButtons();
+
+document.addEventListener('visibilitychange', function() {
+            const marqueeContent = document.querySelectorAll('.marquee-content');
+            if (document.hidden) {
+                marqueeContent.forEach(content => {
+                    content.style.animationPlayState = 'paused';
+                });
+            } else {
+                marqueeContent.forEach(content => {
+                    content.style.animationPlayState = 'running';
+                });
+            }
+        });

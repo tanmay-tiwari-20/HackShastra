@@ -412,185 +412,33 @@ function initializeMagneticButtons() {
 // Initialize when page loads
 initializeMagneticButtons();
 
-const items = [
-  {
-    id: "1",
-    img: "1.jpg",
-  },
-  {
-    id: "2",
-    img: "2.jpg",
-  },
-  {
-    id: "3",
-    img: "3.jpg",
-  },
-  {
-    id: "4",
-    img: "4.jpg",
-  },
-  {
-    id: "5",
-    img: "5.jpg",
-  },
-  {
-    id: "6",
-    img: "6.jpg",
-  },
-  {
-    id: "7",
-    img: "7.jpg",
-  },
-  {
-    id: "8",
-    img: "8.jpg",
-  },
-  {
-    id: "9",
-    img: "9.jpg",
-  },
-  {
-    id: "10",
-    img: "10.jpg",
-  },
-  {
-    id: "11",
-    img: "11.jpg",
-  },
-  {
-    id: "12",
-    img: "12.jpg",
-  },
-  {
-    id: "13",
-    img: "13.jpg",
-  },
-  {
-    id: "14",
-    img: "14.jpg",
-  },
-  {
-    id: "15",
-    img: "15.jpg",
-  },
-  {
-    id: "16",
-    img: "16.jpg",
-  },
-  {
-    id: "17",
-    img: "17.jpg",
-  },
-  {
-    id: "18",
-    img: "18.jpg",
-  },
-  {
-    id: "19",
-    img: "19.jpg",
-  },
-  {
-    id: "20",
-    img: "20.jpg",
-  },
-  {
-    id: "21",
-    img: "21.jpg",
-  },
-  {
-    id: "22",
-    img: "22.jpg",
-  },
-  {
-    id: "23",
-    img: "23.jpg",
-  },
-  {
-    id: "24",
-    img: "24.jpg",
-  },
-  {
-    id: "25",
-    img: "25.jpg",
-  },
-];
+document.addEventListener("DOMContentLoaded", () => {
+  const marquees = [
+    { el: document.getElementById("marquee1"), speed: -1 }, // left to right
+    { el: document.getElementById("marquee2"), speed: 1 }, // right to left
+  ];
 
-function getColumns() {
-  if (window.innerWidth >= 1500) return 5;
-  if (window.innerWidth >= 1000) return 4;
-  if (window.innerWidth >= 600) return 3;
-  if (window.innerWidth >= 400) return 2;
-  return 1;
-}
+  marquees.forEach(({ el, speed }) => {
+    let scrollAmount = 0;
+    let isHovered = false;
 
-// bucketed heights for neat layout
-function getRandomHeight() {
-  const heights = [180, 240, 300, 360];
-  return heights[Math.floor(Math.random() * heights.length)];
-}
+    // Duplicate images for infinite scroll
+    el.innerHTML += el.innerHTML;
 
-function renderMasonry() {
-  const container = document.getElementById("masonry");
-  container.innerHTML = "";
-
-  const columns = getColumns();
-  const gap = 16;
-  const width = container.clientWidth;
-  const columnWidth = (width - (columns - 1) * gap) / columns;
-  const colHeights = new Array(columns).fill(0);
-
-  items.forEach((item, index) => {
-    const col = colHeights.indexOf(Math.min(...colHeights));
-    const x = col * (columnWidth + gap);
-    const y = colHeights[col];
-
-    const h = getRandomHeight();
-
-    // create element
-    const div = document.createElement("div");
-    div.dataset.key = item.id + "-" + index;
-    div.className =
-      "absolute box-content rounded-[10px] shadow-lg bg-cover bg-center cursor-pointer";
-    div.style.cssText = `
-      width:${columnWidth}px;
-      height:${h}px;
-      background-image:url(${item.img});
-      transform: translate(${x}px, ${y}px);
-    `;
-    div.onclick = () => window.open(item.url, "_blank");
-
-    container.appendChild(div);
-
-    // animate in
-    gsap.fromTo(
-      div,
-      { opacity: 0, y: y + 100, filter: "blur(10px)" },
-      {
-        opacity: 1,
-        y,
-        filter: "blur(0px)",
-        duration: 0.8,
-        delay: index * 0.05,
-        ease: "power3.out",
+    const startScrolling = () => {
+      if (!isHovered) {
+        scrollAmount += speed;
+        if (Math.abs(scrollAmount) >= el.scrollWidth / 2) {
+          scrollAmount = 0;
+        }
+        el.style.transform = `translateX(${scrollAmount}px)`;
       }
-    );
+      requestAnimationFrame(startScrolling);
+    };
 
-    colHeights[col] += h + gap;
+    el.addEventListener("mouseover", () => (isHovered = true));
+    el.addEventListener("mouseout", () => (isHovered = false));
+
+    startScrolling();
   });
-
-  // force bottom alignment
-  const maxHeight = Math.max(...colHeights);
-  container.style.height = maxHeight + "px";
-}
-
-window.addEventListener("resize", renderMasonry);
-renderMasonry();
-
-document.addEventListener("mouseover", (e) => {
-  const target = e.target.closest("[data-key]");
-  if (target) gsap.to(target, { scale: 0.95, duration: 0.3 });
-});
-document.addEventListener("mouseout", (e) => {
-  const target = e.target.closest("[data-key]");
-  if (target) gsap.to(target, { scale: 1, duration: 0.3 });
 });

@@ -635,3 +635,98 @@ body {
 .marquee-wrap::after {
     right: 0;
 }
+
+@keyframes glow {
+
+    0%,
+    100% {
+        box-shadow: 0 0 5px rgba(239, 68, 68, 0.3);
+    }
+
+    50% {
+        box-shadow: 0 0 25px rgba(239, 68, 68, 0.6), 0 0 35px rgba(239, 68, 68, 0.4);
+    }
+}
+
+
+
+.card-glow {
+    transition: all 0.3s ease;
+}
+
+.card-glow:hover {
+    animation: glow 2s ease-in-out infinite;
+    border-color: rgba(239, 68, 68, 0.5);
+}
+
+.delay-100 {
+    animation-delay: 0.1s;
+}
+
+.delay-200 {
+    animation-delay: 0.2s;
+}
+
+.delay-300 {
+    animation-delay: 0.3s;
+}
+
+.delay-400 {
+    animation-delay: 0.4s;
+}
+
+.delay-500 {
+    animation-delay: 0.5s;
+}
+
+.delay-600 {
+    animation-delay: 0.6s;
+}
+
+/* Modern gradient backgrounds */
+.gradient-bg-1 {
+    background: linear-gradient(135deg, #fef2f2 0%, #ffffff 50%, #fef2f2 100%);
+}
+
+.gradient-bg-2 {
+    background: linear-gradient(135deg, #ffffff 0%, #fef2f2 50%, #ffffff 100%);
+}
+
+/* Hover effects */
+.achievement-card {
+    position: relative;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.achievement-card::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(45deg,
+            transparent,
+            rgba(239, 68, 68, 0.1),
+            transparent);
+    transform: rotate(45deg);
+    transition: all 0.6s ease;
+    opacity: 0;
+}
+
+.achievement-card:hover::before {
+    animation: shimmer 1.5s ease-in-out;
+    opacity: 1;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%) translateY(-100%) rotate(45deg);
+    }
+
+    100% {
+        transform: translateX(100%) translateY(100%) rotate(45deg);
+    }
+}
